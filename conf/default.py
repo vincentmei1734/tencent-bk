@@ -58,7 +58,7 @@ SITE_URL = '/'
 RUN_MODE = 'DEVELOP'
 if ENVIRONMENT.endswith('production'):
     RUN_MODE = 'PRODUCT'
-    DEBUG = False
+    DEBUG = True
     SITE_URL = '/o/%s/' % APP_ID
 elif ENVIRONMENT.endswith('testing'):
     RUN_MODE = 'TEST'
