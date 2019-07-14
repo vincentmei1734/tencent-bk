@@ -26,7 +26,7 @@ def mwptest1(request):
         输入参数并返回
     """
     if request.POST:
-        input1=str(request.POST.get('input1',None)).
+        input1=str(request.POST.get('input1',None))
         if input1 == 'Hello&nbsp;Blueking' or input1 == 'Hello Blueking':
         #result="Congratulation！"
             return render_json({'result':'Congratulation！'})
