@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-from common.mymako import render_mako_context
+from common.mymako import render_mako_context,render_json
 from blueking.component.shortcuts import get_client_by_request
 from home_application.celery_tasks import async_task, execute_task, get_time
 
