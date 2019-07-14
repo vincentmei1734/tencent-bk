@@ -17,8 +17,9 @@ urlpatterns = patterns(
     # 应用功能开关控制--请勿修改
     url(r'^app_control/', include('app_control.urls')),
     # 在home_application(根应用)里开始开发你的应用的主要功能
-    url(r'^', include('home_application.urls')),
     url(r'^mwp', include('home_application.urls')),
+    url(r'^', include('home_application.urls')),
+    
     # 会议管理
     url(r'^iwork/', include('iwork.urls')),
     # 磁盘容量查询
