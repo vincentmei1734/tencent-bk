@@ -34,7 +34,7 @@
 <script>
         function submit1(obj){
         var input1 = $('#input1').val();
-        $.post('/mwp/mwptest1/', {'input1': input1}, function(data){
+        $.post('${SITE_URL}/mwptest1/', {'input1': input1}, function(data){
             if(data.result){
                 $("#out1").text(data.result);
             }else{
