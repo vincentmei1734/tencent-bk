@@ -26,12 +26,12 @@ def mwptest1(request):
         输入参数并返回
     """
     if request.POST:
-        input1=str(request.POST.get('input1',None))
-        if input1 == 'Hello Blueking':
+        input1=str(request.POST.get('input1',None)).
+        if input1 == 'Hello&nbsp;Blueking':
         #result="Congratulation！"
             return render_json({'result':'Congratulation！'})
-        else:
-            return render_json({'result':input1})
+        # else:
+        #     return render_json({'result':input1})
     return render_mako_context(request, '/home_application/mwptest.html')
 
 def test(request):
