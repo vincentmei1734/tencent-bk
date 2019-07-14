@@ -30,8 +30,8 @@ def mwptest1(request):
         if input1 == "Hello Blueking":
         #result="Congratulation！"
             return render_json({'result':'Congratulation！'})
-        # else:
-        #     return render_json({'result':input1})
+        else:
+            return render_json({'result':input1})
     return render_mako_context(request, '/home_application/mwptest.html')
 
 def test(request):
