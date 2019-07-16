@@ -3,6 +3,8 @@
 from common.mymako import render_mako_context,render_json
 from blueking.component.shortcuts import get_client_by_request
 from home_application.celery_tasks import async_task, execute_task, get_time
+from home_application.models import HostInfo
+from datetime import datetime
 
 
 def home(request):
@@ -20,6 +22,44 @@ def home(request):
     # 执行定时任务
     # execute_task(2)
     return render_mako_context(request, '/home_application/home.html', {'result': resp})
+def hostinfo_mwptest3(request):
+    """
+        主机信息新增和查询
+    """
+    if request.method == 'POST':
+        host=request.POST.get('host',None)
+        ip=request.POST.get('ip',None)
+        systemtype=request.POST.get('systemtype',None)
+        diskdir=request.POST.get('diskdir',None)
+        if host and ip and systemtype and diskdir:
+            try:
+                HostInfo.objects.create(host=host,ip=ip,systemtype=systemtype,diskdir=diskdir,createtime=datetime.now())
+            except Exception as e:
+                return render_json({'code':'-1','message':str(e)})
+            return render_json({'code':'0','message':"insert success"})
+    allHost=HostInfo.objects.all().order_by('-id')
+    data = []
+    for index, info in enumerate(allHost):
+        data.append({
+            'index': index,
+            'host': info.host,
+            'ip': info.ip,
+            'systemtype': info.systemtype,
+            'diskdir': info.diskdir,
+            'createtime': info.createtime.strftime('%Y-%m-%d %H:%M:%S')
+        })
+#    return render_json({'data':data})
+    return render_json({"catalogues":{
+        "index":"#",
+        "host":"主机名",
+        "ip":"位置",
+        "systemtype":"操作系统类型",
+        "diskdir":"磁盘目录",
+        "createtime":"创建时间"
+    },"items":data})
+
+def mwptest3(request):
+    return render_mako_context(request, '/home_application/mwptest3.html')
 
 def mwptest1(request):
     """
