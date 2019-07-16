@@ -159,11 +159,11 @@
                                     <div class="col-sm-9">
                                         <div class="radio pt0">
                                             <label class="mr10">
-                                                <input type="radio" name="optionsRadios" id="systemtype" class="bk-top5" value="Linux">
+                                                <input type="radio" name="systemtype" id="systemtype" class="bk-top5" value="Linux">
                                                 <span class="bk-lh30">Linux</span>
                                             </label>
                                             <label class="mr10">
-                                                <input type="radio" name="optionsRadios" id="systemtype" class="bk-top5" value="windows">
+                                                <input type="radio" name="systemtype" id="systemtype" class="bk-top5" value="windows">
                                                 <span class="bk-lh30">windows</span>
                                             </label>
                                         </div>
@@ -297,7 +297,8 @@
         function addhost(obj){
         var host = $('#host').val();
         var ip = $('#ip').val();
-        var systemtype = $('#systemtype').val();
+        // var systemtype = $('#systemtype').val();
+        var systemtype = $('input[name="systemtype"]:checked').val(); 
         var diskdir = $('#diskdir').val();
         $.post('${SITE_URL}//hostinfo_mwptest3/', {'host': host, 'ip': ip, 'systemtype': systemtype, 'diskdir': diskdir}, function(data){
                 // console.log(data)
